@@ -58,4 +58,27 @@ class TaskController extends Controller
         notify()->success('Zadanie zostało pomyślnie usunięte!');
         return redirect()->route('tasks.index');
     }
+
+    public function tasks()
+    {
+        return view('tasks.tasks', ['task' => Task::All()]);
+    }
+
+    public function start($id)
+    {
+        $task = Task::findOrFail($id);
+        $task->status = 'in progress';
+        $task->save();
+        notify()->success('Twoje zadanie jest rozpoczęte!');
+        return redirect()->route('home')->with('success', 'Zadanie rozpoczęte!');
+    }
+
+    public function complete($id)
+    {
+        $task = Task::findOrFail($id);
+        $task->status = 'done';
+        $task->save();
+        notify()->success('Twoje zadanie zostało ukończone!');
+        return redirect()->route('home')->with('success', 'Zadanie zakończone!');
+    }
 }
