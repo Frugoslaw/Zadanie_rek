@@ -12,7 +12,7 @@ class TaskController extends Controller
 {
     public function index()
     {
-        $tasks = auth()->user()->tasks()->get();
+        $tasks = auth()->user()->tasks()->paginate(3);
         return view('tasks.index', ['tasks' => $tasks]);
     }
 
@@ -20,7 +20,7 @@ class TaskController extends Controller
     {
         return view('tasks.create', [
             'priorities' => TaskConstants::PRIORITY,
-            'status' => TaskConstants::STATUS,
+            'statuses' => TaskConstants::STATUS,
         ]);
     }
 
@@ -28,7 +28,7 @@ class TaskController extends Controller
     {
         $task = new Task($request->validated());
         $task->save();
-
+        notify()->success('Zadanie zostało pomyślnie utworzone!');
         return redirect()->route('tasks.index')->with('success', 'Task utworzony.');;
     }
 
@@ -37,23 +37,25 @@ class TaskController extends Controller
         return view('tasks.edit', [
             'task' => $task,
             'priorities' => TaskConstants::PRIORITY,
-            'status' => TaskConstants::STATUS,
+            'statuses' => TaskConstants::STATUS,
         ]);
     }
 
     public function update(TaskRequest $request, Task $task)
     {
-        $task->update($request->all());
+        $task->update($request->validated());
+        notify()->success('Zadanie zostało pomyślnie zaktualizowane!');
         return redirect()->route('tasks.edit', [
             'task' => $task,
             'priorities' => TaskConstants::PRIORITY,
             'status' => TaskConstants::STATUS,
-        ])->with('success', 'Task utworzony pomyslnie.');
+        ])->with('success', 'Task zaktualizowany pomyslnie.');
     }
 
     public function destroy(Task $task)
     {
         $task->delete();
+        notify()->success('Zadanie zostało pomyślnie usunięte!');
         return redirect()->route('tasks.index');
     }
 }

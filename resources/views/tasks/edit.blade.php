@@ -28,9 +28,22 @@
                     <div class="mb-3">
                         <label for="priority" class="form-label">Priorytet</label>
                         <select id="priority" name="priority" class="form-select" required>
-                            <option value="low" {{ $task->priority === 'low' ? 'selected' : '' }}>Niski</option>
-                            <option value="medium" {{ $task->priority === 'medium' ? 'selected' : '' }}>Średni</option>
-                            <option value="high" {{ $task->priority === 'high' ? 'selected' : '' }}>Wysoki</option>
+                            @foreach ($priorities as $value => $label)
+                                <option value="{{ $value }}"
+                                    {{ old('priority', $task->priority ?? '') === $value ? 'selected' : '' }}>
+                                    {{ $label }}
+                                </option>
+                            @endforeach
+                        </select>
+
+                        <label for="priority" class="form-label">Status</label>
+                        <select id="status" name="status" class="form-select" required>
+                            @foreach ($statuses as $value => $label)
+                                <option value="{{ $value }}"
+                                    {{ old('status', $task->status ?? '') === $value ? 'selected' : '' }}>
+                                    {{ $label }}
+                                </option>
+                            @endforeach
                         </select>
                     </div>
 

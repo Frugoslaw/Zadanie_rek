@@ -17,6 +17,7 @@ class TaskRequest extends FormRequest
         return [
             'name' => 'required|max:255',
             'due_date' => 'required|date',
+            'description' => 'required|max:255',
             'priority' => 'required|in:' . TaskConstants::prioritiesKeys(),
             'status' => 'required|in:' . TaskConstants::statusKeys(),
             'user_id' => 'required|exists:users,id',
@@ -28,6 +29,7 @@ class TaskRequest extends FormRequest
         return [
             'name.required' => 'Nazwa zadania jest wymagana.',
             'name.max' => 'Nazwa zadania nie może przekraczać 255 znaków.',
+            'name.description' => 'Opis zadania nie może przekraczać 255 znaków.',
             'due_date.required' => 'Data wykonania jest wymagana.',
             'due_date.date' => 'Data wykonania musi być poprawną datą.',
             'priority.required' => 'Priorytet jest wymagany.',
@@ -39,6 +41,7 @@ class TaskRequest extends FormRequest
 
     protected function prepareForValidation(): void
     {
+        // dd(auth()->id());
         $this->merge([
             'user_id' => auth()->id(),
         ]);
