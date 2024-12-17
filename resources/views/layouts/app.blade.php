@@ -38,7 +38,7 @@
                 <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button"
                     data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="#!">Logi</a></li>
+                    <li><a class="dropdown-item" href="/admin/activity-log">Logi</a></li>
                     <li>
                         <hr class="dropdown-divider" />
                     </li>
@@ -70,6 +70,10 @@
                         <a class="nav-link" href="{{ route('tasks.index') }}">
                             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                             Lista tasków
+                        </a>
+                        <a class="nav-link" href="admin/activity-log">
+                            <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                            Lista logów
                         </a>
                     </div>
                 </div>
