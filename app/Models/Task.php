@@ -14,13 +14,10 @@ class Task extends Model
 
     protected $fillable = ['name', 'description', 'priority', 'status', 'due_date', 'user_id',];
 
-    // Nazwa modelu w logach
     protected static $logName = 'task';
 
-    // Ustawienie logowania tylko dla wypełnionych atrybutów
     protected static $logFillable = true;
 
-    // Opcje logowania
     public function getActivitylogOptions(): LogOptions
     {
         return LogOptions::defaults()
@@ -28,6 +25,12 @@ class Task extends Model
             ->useLogName('task')
             ->logFillable();
     }
+
+    public function scopeDueTomorrow($query)
+    {
+        return $query->whereDate('due_date', '=', now()->addDay());
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class);

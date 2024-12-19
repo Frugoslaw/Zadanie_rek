@@ -30,12 +30,6 @@ class TaskController extends Controller
         $task->save();
         notify()->success('Zadanie zostało pomyślnie utworzone!');
 
-        activity()
-            ->causedBy(auth()->user())
-            ->performedOn($task)
-            ->withProperties(['name' => $task->name, 'description' => $task->description])
-            ->log('Dodano nowe zadanie: ' . $task->name);
-
         return redirect()->route('tasks.index')->with('success', 'Task utworzony.');;
     }
 
@@ -52,12 +46,6 @@ class TaskController extends Controller
     {
         $task->update($request->validated());
         notify()->success('Zadanie zostało pomyślnie zaktualizowane!');
-
-        activity()
-            ->causedBy(auth()->user())
-            ->performedOn($task)
-            ->withProperties(['name' => $task->name, 'description' => $task->description])
-            ->log('Zaktualizowano zadanie: ' . $task->name);
 
         return redirect()->route('tasks.edit', [
             'task' => $task,
@@ -83,11 +71,6 @@ class TaskController extends Controller
         $task = Task::findOrFail($id);
         $task->status = 'in progress';
         $task->save();
-        activity()
-            ->causedBy(auth()->user())
-            ->performedOn($task)
-            ->withProperties(['name' => $task->name, 'description' => $task->description])
-            ->log('Zadanie ' . $task->name . ' zostało rozpoczete!');
         return redirect()->route('home')->with('success', 'Zadanie rozpoczęte!');
     }
 
@@ -97,11 +80,6 @@ class TaskController extends Controller
         $task->status = 'done';
         $task->save();
         notify()->success('Twoje zadanie zostało ukończone!');
-        activity()
-            ->causedBy(auth()->user())
-            ->performedOn($task)
-            ->withProperties(['name' => $task->name, 'description' => $task->description])
-            ->log('Zadanie zostało ukończone. ' . $task->name);
         return redirect()->route('home')->with('success', 'Zadanie zakończone!');
     }
 }
