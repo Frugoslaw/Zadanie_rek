@@ -6,7 +6,7 @@
 </head>
 <body>
     <h1>Task Management Application</h1>
-    <p>Aplikacja do zarządzania zadaniami z funkcjonalnościami przypomnień e-mail, filtrowania zadań oraz obsługi kolejek. Projekt zbudowany na Laravel i Vue.js.</p>
+    <p>Aplikacja do zarządzania zadaniami z funkcjonalnościami przypomnień e-mail, filtrowania zadań. Projekt zbudowany na Laravel.</p>
     <h2>Wymagania</h2>
     <p>Przed rozpoczęciem pracy upewnij się, że masz zainstalowane następujące narzędzia:</p>
     <ul>
