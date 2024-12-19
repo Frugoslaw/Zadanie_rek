@@ -3,12 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Task Management Application - README</title>
 </head>
 <body>
     <h1>Task Management Application</h1>
     <p>Aplikacja do zarządzania zadaniami z funkcjonalnościami przypomnień e-mail, filtrowania zadań oraz obsługi kolejek. Projekt zbudowany na Laravel i Vue.js.</p>
-
     <h2>Wymagania</h2>
     <p>Przed rozpoczęciem pracy upewnij się, że masz zainstalowane następujące narzędzia:</p>
     <ul>
@@ -17,7 +15,6 @@
         <li>Node.js (z <code>npm</code>)</li>
         <li>Laravel 11.x</li>
     </ul>
-
     <h2>Instalacja</h2>
     <ol>
         <li>
