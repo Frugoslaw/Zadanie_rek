@@ -20,7 +20,7 @@
         <li>
             <strong>Pobierz projekt</strong>
             <pre><code>git clone https://github.com/Frugoslaw/Zadanie_rek.git
-cd task-management</code></pre>
+cd Zadanie_rek</code></pre>
         </li>
         <li>
             <strong>Instalacja zależności PHP</strong>
@@ -61,7 +61,6 @@ cd task-management</code></pre>
             <p>Aby zatrzymać serwer, naciśnij <code>Ctrl+C</code> w terminalu.</p>
         </li>
     </ol>
-
     <h2>Licencja</h2>
     <p>Projekt jest dostępny na licencji MIT. Zobacz plik LICENSE, aby uzyskać więcej informacji.</p>
 </body>
